@@ -1,9 +1,11 @@
-﻿namespace Algorithm
+﻿using System.Globalization;
+
+namespace Algorithm
 {
 
-    class Bubblesort
+    class Sorting
     {
-        public static void sort(int[] ints)
+        public static void BubbleSort(int[] ints)
         {
             int temp;
             int l = ints.Length;
@@ -18,6 +20,24 @@
                         ints[j] = temp;
                     }
                 }
+            }
+        }
+        public static void SelectionSort(int[] ints)
+        {
+            int minIndex;
+            int l = ints.Length;
+            for (int i = 0; i < l - 1; i++)
+            {
+                int temp;
+                minIndex = i;
+                for (int j = i + 1; j < l; j++)
+                {
+                    if (ints[j] < ints[minIndex])
+                        minIndex = j;
+                }
+                temp = ints[i];
+                ints[i] = ints[minIndex];
+                ints[minIndex] = temp;
             }
         }
     }
@@ -57,7 +77,7 @@
 
             for (int i = 0; i < everyIntArrays.Length; i++)
             {
-                Bubblesort.sort(everyIntArrays[i]);
+                Sorting.SelectionSort(everyIntArrays[i]);
             }
 
             //Printing every arrays
