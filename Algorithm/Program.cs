@@ -40,6 +40,25 @@ namespace Algorithm
                 ints[minIndex] = temp;
             }
         }
+
+        public static void InsertionSort(int[] ints)
+        {
+            int l = ints.Length;
+            int currentValue;
+            int index;
+            for (int i = 1; i < l; i++)
+            {
+                currentValue = ints[i];
+                index = i - 1;
+                while (index >= 0 && currentValue < ints[index])
+                {
+                    ints[index + 1] = ints[index];
+                    index--;
+                }
+                ints[index+1] = currentValue;
+            }
+        }
+        
     }
 
 
@@ -77,7 +96,7 @@ namespace Algorithm
 
             for (int i = 0; i < everyIntArrays.Length; i++)
             {
-                Sorting.SelectionSort(everyIntArrays[i]);
+                Sorting.InsertionSort(everyIntArrays[i]);
             }
 
             //Printing every arrays
