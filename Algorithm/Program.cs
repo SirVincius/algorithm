@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace Algorithm
 {
@@ -61,6 +62,30 @@ namespace Algorithm
         
     }
 
+    class DataGeneration
+    {
+        public static int[] GenerateIntArray()
+        {
+            Random random = new Random();
+            int[] intArray = new int[10];
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                intArray[i] = random.Next(1, 101);
+            }
+            return intArray;
+        }
+
+        public static int[][] generateArrayOfIntArray()
+        {
+            int[][] arrayOfIntArray = new int[5][];
+            for (int i = 0; i < 5; i++)
+            {
+                arrayOfIntArray[i] = GenerateIntArray();
+            }
+            return arrayOfIntArray;
+        }
+    }
+
 
     class Program
     {
@@ -71,29 +96,16 @@ namespace Algorithm
             Random random = new Random();
 
             //Int arrays creations
-            int[] intArray1 = new int[10];
-            int[] intArray2 = new int[10];
-            int[] intArray3 = new int[10];
-            int[] intArray4 = new int[10];
-            int[] intArray5 = new int[10];
+            int[] intArray1 = DataGeneration.GenerateIntArray();
+            int[] intArray2 = DataGeneration.GenerateIntArray();
+            int[] intArray3 = DataGeneration.GenerateIntArray();
+            int[] intArray4 = DataGeneration.GenerateIntArray();
+            int[] intArray5 = DataGeneration.GenerateIntArray();
 
             //Adding each array to an array
-            int[][] everyIntArrays = new int[5][];
-            everyIntArrays[0] = intArray1;
-            everyIntArrays[1] = intArray2;
-            everyIntArrays[2] = intArray3;
-            everyIntArrays[3] = intArray4;
-            everyIntArrays[4] = intArray5;
+            int[][] everyIntArrays = DataGeneration.generateArrayOfIntArray();
 
-            //Filling int arrays with int
-            for (int i = 0; i < everyIntArrays.Length; i++)
-            {
-                for (int j = 0; j < everyIntArrays[i].Length; j++)
-                {
-                    everyIntArrays[i][j] = random.Next(1, 101);
-                }
-            }
-
+            //Sorting every int array
             for (int i = 0; i < everyIntArrays.Length; i++)
             {
                 Sorting.InsertionSort(everyIntArrays[i]);
